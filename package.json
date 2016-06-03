@@ -6,7 +6,9 @@
   "scripts": {
     "devbuild": "npm run clean && webpack",
     "clean": "rm -rf dist",
-    "start": "cross-env NODE_ENV=development npm run devbuild && cross-env NODE_ENV=development node server.dev.js"
+    "dev": "cross-env NODE_ENV=development npm run devbuild && cross-env NODE_ENV=development node server.dev.js",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors --bail",
+    "start": "npm run build && cross-env NODE_ENV=production PORT=9000 node server.js"
   },
   "author": "Uppercase AS",
   "license": "ISC",
